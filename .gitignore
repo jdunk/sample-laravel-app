@@ -1,0 +1,40 @@
+/bootstrap/compiled.php
+/vendor
+
+# Log files
+php_errors.log
+
+node_modules/
+bower_components/
+
+.env.*.php
+.env.php
+
+composer.phar
+composer.lock
+
+.DS_Store
+*.jar
+
+!/.gitignore
+!/.gitattributes
+!/.editorconfig
+.idea/
+
+# SublimeText
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*~
+*.swp
+*.swo
+
+# vagrant/puphpet
+*.box
+.vagrant
+
+public/phpinfo.php
+
+bin/*.pdf
+puphpet/puppet/modules

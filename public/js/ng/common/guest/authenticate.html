@@ -1,0 +1,133 @@
+<div class="ng-view-transition-container">
+
+    <nd-alert nd-alert-zone="authentication"></nd-alert>
+
+    <div role="authentication-tabs">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="authentication-tablist">
+            <li ng-class="{active:mode == 'login'}"
+                role="authentication-menu"><a
+                    aria-controls="sign-in" role="tab" class="btn btn-default" ng-click="changeMode('login')">Sign In</a></li>
+            <li ng-class="{active:mode == 'register'}"
+                role="authentication-menu"><a
+                    aria-controls="register" role="tab" class="btn btn-default" ng-click="changeMode('register')">Register</a></li>
+        </ul>
+
+    </div>
+
+    <div class="login ng-view-transition" ng-show="mode == 'login'">
+        <h2>Sign In</h2>
+
+        <form name="loginForm" role="form" class="mbm">
+            <div class="form-group" show-errors>
+                <input ng-model="loginUsername"
+                       ng-minlength="2"
+                       ng-maxlength="100"
+                       ng-required="true"
+                       focus="loginFocus"
+                       class="form-control input-lg" placeholder="Username or E-mail Address"
+                       type="text" name="loginUsername">
+
+                <ui-validation-error-messages />
+            </div>
+            <div class="form-group" show-errors>
+                <input ng-model="loginPassword"
+                       ng-minlength="7"
+                       ng-maxlength="30"
+                       ng-required="true"
+                       type="password" name="loginPassword" placeholder="Password" class="form-control input-lg">
+
+                <ui-validation-error-messages />
+            </div>
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="rememberMe" ng-checked="rememberMe"> Remember me
+                </label>
+            </div>
+
+            <button type="submit" ng-disabled="loginForm.$invalid || loginForm.$pristine" class="btn btn-default btn-primary" ng-click="login()">GO</button>
+        </form>
+
+        <p>
+            <a href="" ng-click="changeMode('forgot')">Lost password?</a>
+        </p>
+
+        <p>
+            <b>Don't have an account?</b><br>
+            <a href="" ng-click="changeMode('register')">Create one</a>
+            or
+            <a href="/oauth/instagram/redirect">use instagram</a>.
+        </p>
+
+    </div>
+
+    <div class="register ng-view-transition" ng-show="mode == 'register'">
+        <h2>Register</h2>
+
+        <form name="registerForm" role="form" class="mbm">
+            <div class="form-group has-feedback" show-errors="{ showSuccess: true, trigger: 'keypress' }">
+                <input ng-model="registerUsername"
+                       ng-minlength="2"
+                       ng-maxlength="32"
+                       ng-required="true"
+                       focus="registerFocus"
+                       autocomplete="off"
+                       username-taken=""
+                       class="form-control input-lg" placeholder="Username"
+                       type="text" name="registerUsername">
+                <span ng-show="registerForm.registerUsername.$error.usernameTaken" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                <ui-validation-error-messages />
+            </div>
+            <div class="form-group" show-errors>
+                <input ng-model="registerEmail"
+                       ng-maxlength="120"
+                       ng-required="true"
+                       type="email" name="registerEmail" class="form-control input-lg" placeholder="E-mail Address">
+                <ui-validation-error-messages />
+            </div>
+            <div class="form-group" show-errors>
+                <input ng-model="registerPassword"
+                       ng-minlength="7"
+                       ng-maxlength="30"
+                       ng-required="true"
+                       autocomplete="off"
+                       type="password" name="registerPassword" placeholder="Password" class="form-control input-lg">
+                <ui-validation-error-messages />
+            </div>
+            <button type="submit" ng-disabled="registerForm.$invalid || registerForm.$pristine" class="btn btn-default btn-primary" ng-click="register()">GO</button>
+        </form>
+
+        <p>
+            <b>Already have an account?</b>
+        </p>
+
+        <p>
+            <a href="" ng-click="changeMode('login')">Sign in</a> or <a href="/oauth/instagram/redirect">use instagram</a>.
+        </p>
+    </div>
+
+    <div class="forgot ng-view-transition" ng-show="mode == 'forgot'">
+        <h2>Reset Password</h2>
+
+        <form name="forgotForm" role="form" class="mbl">
+
+            <div class="form-group" show-errors>
+                <input ng-model="resetEmail" focus="forgotFocus" type="email" name="resetEmail" class="form-control input-lg" placeholder="E-mail Address or Username" ng-required>
+                <ui-validation-error-messages />
+            </div>
+
+            <button type="submit" ng-disabled="forgotForm.$invalid || forgotForm.$pristine" class="btn btn-default btn-primary" ng-click="forgot()">GO</button>
+        </form>
+
+        <p>
+            <b>Don't have an account?</b>
+        </p>
+
+        <p>
+            <a href="" ng-click="changeMode('register')">Register</a> or <a href="/oauth/instagram/redirect">use instagram</a>.
+        </p>
+    </div>
+
+</div>

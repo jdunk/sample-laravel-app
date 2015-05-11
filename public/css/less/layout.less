@@ -1,0 +1,128 @@
+/* Bootstrap Mixins */
+@import "../../../bower_components/bootstrap/less/variables.less";
+
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.header .logo img {
+  width:100%;
+  height:auto;
+}
+
+/* Full size BG */
+.fs-bg {
+  background-position: center center;
+  background-size: cover;
+  display: block;
+  left: 0;
+  list-style: outside none none;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+  opacity: 0;
+}
+
+.fs-bg-auth {
+  background-image: url("//s3-us-west-1.amazonaws.com/acme/assets/elements/bradsritter-girl-follow-me.jpg");
+
+}
+
+/* Footer */
+.social-links {
+  display: inline-block;
+  margin: 15px 0 0;
+  padding: 0;
+  li {
+    display:block;
+    float:left;
+    width:60px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: .6em;
+    font-weight: bold;
+
+    span {
+      font-size: 1.8em;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    a {
+      display:inline-block;
+      color: @text-color;
+      text-decoration: none;
+      outline: none;
+      &:hover {
+        color: #000000;
+      }
+    }
+  }
+}
+
+/* Assets/Elements */
+
+
+
+/* Utility */
+
+body {
+	font-weight: 300;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.hc {
+  .hc-toggle {
+    transition: opacity 250ms ease-in-out;
+    opacity: .1;
+  }
+
+  &:hover {
+    .hc-toggle {
+      opacity: 1;
+    }
+  }
+}
+
+.muted {
+  -webkit-transition: opacity .25s ease-in-out;
+  transition: opacity .25s ease-in-out;
+  opacity: .4;
+}
+
+/* Bootstrap Overrides */
+
+.form-control {
+  // border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 1) rgba(0, 0, 0, 1) rgba(0, 0, 0, 0);
+}
+
+.form-control:focus {
+  box-shadow: none;
+  background-color: rgba(255,255,255,1);
+}
+
+.form-control:focus::-webkit-input-placeholder {
+  color: @gray-light;
+}
+
+.form-control:focus:-moz-placeholder {
+  color: @gray-light;
+}
+
+.form-control:focus::-moz-placeholder {
+  color: @gray-light;
+}
+
+.form-control:focus:-ms-input-placeholder {
+  color: @gray-light;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+  text-transform: uppercase;
+}

@@ -1,0 +1,36 @@
+#!/bin/bash
+
+cd app 2>/dev/null
+
+if [[ $? -ne 0 ]]; then
+    echo "You must run this from the repo root"
+    exit
+fi
+
+function change_four_spaces_to_tabs {
+    while : ; do
+        find . -path '*/views*' -prune -o -name '*.php' -exec perl -pi -e 's/^(\s*?) {4}/\1\t/g' {} \;
+        grep -r --include=*.php --exclude-dir=views -e '^\(\s*\?\) \{4\}' . >/dev/null
+        [[ $? -eq 0 ]] || break
+    done
+}
+
+change_four_spaces_to_tabs
+
+cd ../bootstrap 2>/dev/null
+
+if [[ $? -ne 0 ]]; then
+    echo "Unable to find 'bootstrap' dir"
+    exit
+fi
+
+change_four_spaces_to_tabs
+
+cd ../public 2>/dev/null
+
+if [[ $? -ne 0 ]]; then
+    echo "Unable to find 'public' dir"
+    exit
+fi
+
+change_four_spaces_to_tabs

@@ -1,0 +1,54 @@
+<div class="row mtl mbm animated fadeIn showdelay1s header">
+    <div class="col-sm-offset-3 col-sm-6">
+        <div class="logo" style="background-color: rgba(255,255,255,0.3)">
+            <img src="https://s3-us-west-1.amazonaws.com/acme/assets/elements/acme-logo-dark.png" alt="Acme Logo">
+        </div>
+    </div>
+</div>
+
+        <!--
+<button ng-click="submitted = true">Submitted</button>
+-->
+
+<div ng-hide="submitted">
+    <div class="row animated bounceInDown showdelay2s">
+        <div class="col-sm-offset-3 col-sm-6">
+            <div class="alert alert-info mbn" type="info" style="background-color: #231f20; border:none; margin-bottom: -1px;">
+                <strong>Sign up</strong> to get a notification when we launch:
+            </div>
+
+            <form name="emailForm">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="email" name="email" ng-model="email" class="form-control input-lg" placeholder="Enter E-Mail Address" autofocus required>
+                        <span class="input-group-btn">
+                          <button type="button" ng-disabled="emailForm.$invalid || emailForm.$pristine" ng-click="signUp()" class="btn btn-default input-lg">GO</button>
+                        </span>
+                    </div>
+                    <!--
+                    <span class="help-block" ng-show="emailForm.email.$error.required">
+                        Required</span>
+                    <span class="help-block" ng-show="emailForm.email.$error.email">
+                        Not valid email</span>
+                        -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row" ng-show="submitted">
+    <div class="col-sm-offset-3 col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Thank you.</h3>
+                <p>
+                    Thank you for signing up to Acme email updates!  We'll let you know when we launch.
+                    In the meantime, join our over 5,000 followers on <a href="http://instagram.com/acme">Instagram</a>!
+
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
